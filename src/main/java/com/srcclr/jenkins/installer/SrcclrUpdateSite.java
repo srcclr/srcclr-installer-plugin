@@ -55,11 +55,11 @@ public class SrcclrUpdateSite extends UpdateSite {
 
   private final static String DEFAULT_SRCCLR_CERT = tempCert;
 
-  private static final String ENV_UPDATE_SITE_CA = "SRCCLR-JENKINS-UPDATE-SITE-CA";
+  private static final String ENV_UPDATE_SITE_CA = "SRCCLR_JENKINS_UPDATE_SITE_CA";
 
-  private static final String ENV_UPDATE_SITE_ID = "SRCCLR-JENKINS-UPDATE-SITE-ID";
+  private static final String ENV_UPDATE_SITE_ID = "SRCCLR_JENKINS_UPDATE_SITE_ID";
 
-  private static final String ENV_UPDATE_SITE_URL = "SRCCLR-JENKINS-UPDATE-SITE-URL";
+  private static final String ENV_UPDATE_SITE_URL = "SRCCLR_JENKINS_UPDATE_SITE_URL";
 
 
   ////////////////////////////// Class Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
