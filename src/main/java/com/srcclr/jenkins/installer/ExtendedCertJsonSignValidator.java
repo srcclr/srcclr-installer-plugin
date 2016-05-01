@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 -  SourceClear Inc, original code by Merkushev Kirill
+ * Copyright (c) 2016 -  SourceClear Inc, with original code (c) by Merkushev Kirill
  *
  * The MIT License
  *

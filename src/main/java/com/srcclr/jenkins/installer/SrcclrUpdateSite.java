@@ -44,7 +44,6 @@ public class SrcclrUpdateSite extends UpdateSite {
     }
   }
 
-
   //
   // If no other values are provided, the defaults are used. These are primed for the internal QA environment.
   //
@@ -52,7 +51,7 @@ public class SrcclrUpdateSite extends UpdateSite {
 
   private static final String DEFAULT_UPDATE_SITE_ID = "srcclr-jenkins-update";
 
-  private static final String DEFAULT_UPDATE_SITE_URL = "https://jenkins-update-site.ksp.ec2.srcclr.io/update-center.json";
+  private static final String DEFAULT_UPDATE_SITE_URL = "https://jenkins.srcclr.com/update-center.json";
 
   private final static String DEFAULT_SRCCLR_CERT = tempCert;
 
