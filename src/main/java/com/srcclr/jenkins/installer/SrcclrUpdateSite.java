@@ -24,59 +24,47 @@
 
 package com.srcclr.jenkins.installer;
 
+import com.google.common.collect.ImmutableMap;
 import hudson.model.UpdateSite;
 import jenkins.util.JSONSignatureValidator;
 import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
+import java.util.Properties;
 
 public class SrcclrUpdateSite extends UpdateSite {
 
   ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-  private static String tempCert = null;
+
+  private static final ImmutableMap.Builder<String, String> BUILDER = new ImmutableMap.Builder<>();
 
   static {
     try {
-      tempCert = IOUtils.toString(SrcclrUpdateSite.class.getResourceAsStream("/srcclr-jenkins-update-site-ca.crt"));
+      Properties p = new Properties();
+      p.load(SrcclrUpdateSite.class.getResourceAsStream("/site.properties"));
+      for (String key : p.stringPropertyNames()) {
+        BUILDER.put(key, p.getProperty(key));
+      }
     } catch (Exception ex) {
       ex.printStackTrace();
     }
   }
 
-  //
-  // If no other values are provided, the defaults are used. These are primed for the internal QA environment.
-  //
-  //
-
-  private static final String DEFAULT_UPDATE_SITE_ID = "srcclr-jenkins-update";
-
-  private static final String DEFAULT_UPDATE_SITE_URL = "https://jenkins.srcclr.com/update-center.json";
-
-  private final static String DEFAULT_SRCCLR_CERT = tempCert;
-
-  private static final String ENV_UPDATE_SITE_CA = "SRCCLR_JENKINS_UPDATE_SITE_CA";
-
-  private static final String ENV_UPDATE_SITE_ID = "SRCCLR_JENKINS_UPDATE_SITE_ID";
-
-  private static final String ENV_UPDATE_SITE_URL = "SRCCLR_JENKINS_UPDATE_SITE_URL";
-
+  private static final ImmutableMap<String, String> PROPERTIES = BUILDER.build();
 
   ////////////////////////////// Class Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
   private static String getSiteCert() {
-    String cert = System.getenv(ENV_UPDATE_SITE_CA);
-    return cert != null ? cert : DEFAULT_SRCCLR_CERT;
+    return PROPERTIES.get("srcclr.site.ca");
   }
 
   private static String getSiteId() {
-    String id = System.getenv(ENV_UPDATE_SITE_ID);
-    return id != null ? id : DEFAULT_UPDATE_SITE_ID;
+    return PROPERTIES.get("srcclr.site.id");
   }
 
   private static String getSiteUrl() {
-    String url = System.getenv(ENV_UPDATE_SITE_URL);
-    return url != null ? url : DEFAULT_UPDATE_SITE_URL;
+    return PROPERTIES.get("srcclr.site.url");
   }
 
   //////////////////////////////// Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

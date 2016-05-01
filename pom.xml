@@ -19,9 +19,43 @@
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <srcclr.site.id>srcclr-jenkins-update</srcclr.site.id>
+    <srcclr.site.url>https://jenkins.srcclr.com/update-center.json</srcclr.site.url>
+    <srcclr.site.ca>-----BEGIN CERTIFICATE-----\
+MIID5zCCAs+gAwIBAgIBATANBgkqhkiG9w0BAQsFADCBtjELMAkGA1UEBhMCVVMx\
+EzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xGDAW\
+BgNVBAoTD1NvdXJjZUNsZWFyIEluYzEUMBIGA1UECxMLRW5naW5lZXJpbmcxIzAh\
+BgNVBAMTGnNyY2Nsci1qZW5raW5zLXVwZGF0ZS1zaXRlMSUwIwYJKoZIhvcNAQkB\
+FhZlbmdpbmVlcmluZ0BzcmNjbHIuY29tMB4XDTE2MDQyOTE3NTEwMFoXDTIxMDQy\
+OTE3NTEwMFowgbYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYw\
+FAYDVQQHEw1TYW4gRnJhbmNpc2NvMRgwFgYDVQQKEw9Tb3VyY2VDbGVhciBJbmMx\
+FDASBgNVBAsTC0VuZ2luZWVyaW5nMSMwIQYDVQQDExpzcmNjbHItamVua2lucy11\
+cGRhdGUtc2l0ZTElMCMGCSqGSIb3DQEJARYWZW5naW5lZXJpbmdAc3JjY2xyLmNv\
+bTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANnYpeFDdBprpzGveUY3\
++sD+fZ13ZlMFTme/g8vPq1vG/HB1/7vn36rnvWaf5npKKXx3Y/nzoY/t43ALhk8L\
+ONWHT6avaocfX7dyNRHVKmJs3DPfI4TVUuG92tjjWCFw1TL98yICDZlZA3UIU4eT\
+5YSQpep8vSRraP5Eez/qbCO9lSKFoDsTAavSR22LuXqkTOwRO7KdE6FH/+dhotxR\
+5EsqKq6wYq3ptRncseKhlajdwyGW/z+55duMTPISs73I+dQIu1bxbU+8bhth+QiZ\
+HOp6IIfIgg9eDKeZvevwFssNlojxPg687v2kYyzISefJ6gJ+vQqnbYTJMI69ZXcQ\
+uMkCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAoHvF+HlB6YOHuweAXa8jEHNIuG4p\
+bFWr3X33rZT/F1S4Pq42ll4Lsfvp2EsHzcYcSO8ce3uu9058GfjADOMxYN7G2b2E\
+PNFVyOwA1E4x4lyHmGT0MluIQmYn3PpZmPLumoU4t++PTKuOqqcRm7d6eh20auaf\
+M+/HXG3I9OO8Q44ZxgXdVrJdnpQYPTe+KelO1lJeECOzanJ6SZCnr8oOEnKJKqIA\
+d4pKZ0F4JV49x5eIUBPOXN5sCQeUk2m5Xp98BG+sHyHK2YqI0SoK0m3qzjSKwwL6\
+RId4qnfKvLKeeQfrdAqa2Mjd0R7ILUFcNfPMLRCLT+BNEkj6vzgPMdH7og==\
+-----END CERTIFICATE-----</srcclr.site.ca>
   </properties>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/site.properties</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
