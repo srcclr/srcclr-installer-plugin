@@ -30,6 +30,7 @@ import jenkins.util.JSONSignatureValidator;
 import org.apache.commons.io.IOUtils;
 
 import javax.annotation.Nonnull;
+import java.io.IOException;
 import java.util.Properties;
 
 public class SrcclrUpdateSite extends UpdateSite {
@@ -46,7 +47,7 @@ public class SrcclrUpdateSite extends UpdateSite {
       for (String key : p.stringPropertyNames()) {
         BUILDER.put(key, p.getProperty(key));
       }
-    } catch (Exception ex) {
+    } catch (IOException ex) {
       ex.printStackTrace();
     }
   }
@@ -56,7 +57,13 @@ public class SrcclrUpdateSite extends UpdateSite {
   ////////////////////////////// Class Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
   private static String getSiteCert() {
-    return PROPERTIES.get("srcclr.site.ca");
+    try {
+      return IOUtils.toString(SrcclrUpdateSite.class.getResourceAsStream("/" + PROPERTIES.get("srcclr.site.ca")));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
+
+    return null;
   }
 
   private static String getSiteId() {
