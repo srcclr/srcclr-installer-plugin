@@ -11,10 +11,11 @@
     <relativePath />
   </parent>
 
-  <groupId>com.srcclr</groupId>
-  <artifactId>jenkins-installer-plugin</artifactId>
+  <groupId>com.srcclr.jenkins</groupId>
+  <artifactId>srcclr-installer-plugin</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>hpi</packaging>
+  <name>The SourceClear Installer Plugin</name>
 
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -23,6 +24,21 @@
     <srcclr.site.url>https://jenkins.srcclr.com/update-center.json</srcclr.site.url>
     <srcclr.site.ca>site.cert</srcclr.site.ca>
   </properties>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/srcclr/srcclr-installer-plugin</url>
+    <connection>scm:git:git@github.com:srcclr/srcclr-installer-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:srcclr/srcclr-installer-plugin.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 
   <build>
     <resources>
