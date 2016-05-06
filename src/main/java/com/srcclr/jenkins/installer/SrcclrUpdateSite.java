@@ -26,7 +26,6 @@ package com.srcclr.jenkins.installer;
 
 import com.google.common.collect.ImmutableMap;
 import hudson.model.UpdateSite;
-import jenkins.model.Jenkins;
 import jenkins.util.JSONSignatureValidator;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -34,19 +33,22 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class SrcclrUpdateSite extends UpdateSite {
 
   ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(SrcclrUpdateSite.class);
 
   private static final ImmutableMap.Builder<String, String> BUILDER = new ImmutableMap.Builder<>();
 
   static {
-    try {
+
+    try (InputStream is = SrcclrUpdateSite.class.getResourceAsStream("/site.properties")) {
       Properties p = new Properties();
-      p.load(SrcclrUpdateSite.class.getResourceAsStream("/site.properties"));
+      p.load(is);
       for (String key : p.stringPropertyNames()) {
         BUILDER.put(key, p.getProperty(key));
       }
@@ -57,8 +59,6 @@ public class SrcclrUpdateSite extends UpdateSite {
 
   private static final ImmutableMap<String, String> PROPERTIES = BUILDER.build();
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(SrcclrUpdateSite.class);
-
   ////////////////////////////// Class Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
   private static String getSiteCert() {
@@ -68,7 +68,7 @@ public class SrcclrUpdateSite extends UpdateSite {
       LOGGER.error("Couldn't find site cert", ex);
     }
 
-    return null;
+    return "";
   }
 
   private static String getSiteId() {

@@ -37,7 +37,11 @@ public class SrcclrUpdateSitePlugin extends Plugin {
 
   @Override
   public void postInitialize() throws Exception {
-    UpdateCenter updateCenter = Jenkins.getInstance().getUpdateCenter();
+    Jenkins jenkins = Jenkins.getInstance();
+    if (jenkins == null) {
+      throw new RuntimeException("Jenkins not found");
+    }
+    UpdateCenter updateCenter = jenkins.getUpdateCenter();
     List<UpdateSite> sites = Lists.newArrayList(updateCenter.getSites());
     sites.add(new SrcclrUpdateSite());
 
