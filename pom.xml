@@ -16,6 +16,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>hpi</packaging>
   <name>The SourceClear Installer Plugin</name>
+  <url>https://wiki.jenkins-ci.org/display/JENKINS/SourceClear+Installer+Plugin</url>
 
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -40,6 +41,14 @@
     <developerConnection>scm:git:git@github.com:srcclr/srcclr-installer-plugin.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
+
+  <developers>
+    <developer>
+      <id>srcclr</id>
+      <name>SourceClear Inc</name>
+      <email>help@srcclr.com</email>
+    </developer>
+  </developers>
 
   <build>
     <resources>
