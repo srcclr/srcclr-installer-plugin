@@ -34,20 +34,8 @@ import java.util.List;
 
 public class SrcclrUpdateSitePlugin extends Plugin {
 
-  ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-  ////////////////////////////// Class Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-  //////////////////////////////// Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-  /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  
-
-  ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-  //------------------------ Implements:
-
-  //------------------------ Overrides: Plugin
-
+  @Override
   public void postInitialize() throws Exception {
     UpdateCenter updateCenter = Jenkins.getInstance().getUpdateCenter();
     List<UpdateSite> sites = Lists.newArrayList(updateCenter.getSites());
@@ -55,11 +43,5 @@ public class SrcclrUpdateSitePlugin extends Plugin {
 
     updateCenter.getSites().replaceBy(sites);
   }
-
-  //---------------------------- Abstract Methods -----------------------------
-
-  //---------------------------- Utility Methods ------------------------------
-
-  //---------------------------- Property Methods -----------------------------
 
 }

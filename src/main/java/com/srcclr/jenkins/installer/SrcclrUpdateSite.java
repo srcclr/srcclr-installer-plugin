@@ -26,8 +26,11 @@ package com.srcclr.jenkins.installer;
 
 import com.google.common.collect.ImmutableMap;
 import hudson.model.UpdateSite;
+import jenkins.model.Jenkins;
 import jenkins.util.JSONSignatureValidator;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
@@ -54,13 +57,15 @@ public class SrcclrUpdateSite extends UpdateSite {
 
   private static final ImmutableMap<String, String> PROPERTIES = BUILDER.build();
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(SrcclrUpdateSite.class);
+
   ////////////////////////////// Class Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
   private static String getSiteCert() {
     try {
       return IOUtils.toString(SrcclrUpdateSite.class.getResourceAsStream("/" + PROPERTIES.get("srcclr.site.ca")));
     } catch (IOException ex) {
-      ex.printStackTrace();
+      LOGGER.error("Couldn't find site cert", ex);
     }
 
     return null;
