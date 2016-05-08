@@ -37,9 +37,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/srcclr/srcclr-installer-plugin</url>
-    <connection>scm:git:git@github.com:srcclr/srcclr-installer-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:srcclr/srcclr-installer-plugin.git</developerConnection>
+    <url>https://github.com/jenkinsci/srcclr-installer-plugin</url>
+    <connection>scm:git:git@github.com:jenkinsci/srcclr-installer-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/srcclr-installer-plugin.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
