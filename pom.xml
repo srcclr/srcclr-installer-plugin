@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -13,7 +11,7 @@
 
   <groupId>com.srcclr.jenkins</groupId>
   <artifactId>srcclr-installer</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>hpi</packaging>
   <name>The SourceClear Installer Plugin</name>
   <url>https://wiki.jenkins-ci.org/display/JENKINS/SourceClear+Installer+Plugin</url>
@@ -25,7 +23,7 @@
     <srcclr.site.url>https://jenkins.srcclr.com/update-center.json</srcclr.site.url>
     <srcclr.site.ca>site.cert</srcclr.site.ca>
     <jenkins.version>1.609.2</jenkins.version>
-    <argLine></argLine>
+    <argLine />
   </properties>
 
   <licenses>
@@ -40,7 +38,7 @@
     <url>https://github.com/jenkinsci/srcclr-installer-plugin</url>
     <connection>scm:git:git@github.com:jenkinsci/srcclr-installer-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/srcclr-installer-plugin.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>srcclr-installer-1.0</tag>
   </scm>
 
   <developers>
