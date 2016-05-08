@@ -11,7 +11,7 @@
 
   <groupId>com.srcclr.jenkins</groupId>
   <artifactId>srcclr-installer</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>hpi</packaging>
   <name>The SourceClear Installer Plugin</name>
   <url>https://wiki.jenkins-ci.org/display/JENKINS/SourceClear+Installer+Plugin</url>
@@ -38,7 +38,7 @@
     <url>https://github.com/jenkinsci/srcclr-installer-plugin</url>
     <connection>scm:git:git@github.com:jenkinsci/srcclr-installer-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/srcclr-installer-plugin.git</developerConnection>
-    <tag>srcclr-installer-1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <developers>
