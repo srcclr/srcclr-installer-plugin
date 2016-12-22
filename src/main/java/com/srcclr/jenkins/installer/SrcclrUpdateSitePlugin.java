@@ -43,23 +43,27 @@ public class SrcclrUpdateSitePlugin extends Plugin {
     }
     UpdateCenter updateCenter = jenkins.getUpdateCenter();
 
-    // this and the exists boolean check below is fix for PDVLP-293
+    // this and existingSrcclrUpdateSite check below is fix for PDVLP-293
     updateCenter.load();
 
     List<UpdateSite> sites = Lists.newArrayList(updateCenter.getSites());
 
-    boolean exists = false;
+    UpdateSite existingSrcclrUpdateSite = null;
 
     for (UpdateSite updateSite : sites) {
       if (updateSite instanceof SrcclrUpdateSite) {
-        exists = true;
+        existingSrcclrUpdateSite = updateSite;
+        break;
       }
     }
 
-    if (!exists) {
-      sites.add(new SrcclrUpdateSite());
-      updateCenter.getSites().replaceBy(sites);
+    if (existingSrcclrUpdateSite != null) {
+      sites.remove(existingSrcclrUpdateSite);
     }
+
+    sites.add(new SrcclrUpdateSite());
+    updateCenter.getSites().replaceBy(sites);
+
   }
 
 }
