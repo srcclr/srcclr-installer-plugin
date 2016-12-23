@@ -42,10 +42,28 @@ public class SrcclrUpdateSitePlugin extends Plugin {
       throw new RuntimeException("Jenkins not found");
     }
     UpdateCenter updateCenter = jenkins.getUpdateCenter();
-    List<UpdateSite> sites = Lists.newArrayList(updateCenter.getSites());
-    sites.add(new SrcclrUpdateSite());
 
+    // this and existingSrcclrUpdateSite check below is fix for PDVLP-293
+    updateCenter.load();
+
+    List<UpdateSite> sites = Lists.newArrayList(updateCenter.getSites());
+
+    UpdateSite existingSrcclrUpdateSite = null;
+
+    for (UpdateSite updateSite : sites) {
+      if (updateSite instanceof SrcclrUpdateSite) {
+        existingSrcclrUpdateSite = updateSite;
+        break;
+      }
+    }
+
+    if (existingSrcclrUpdateSite != null) {
+      sites.remove(existingSrcclrUpdateSite);
+    }
+
+    sites.add(new SrcclrUpdateSite());
     updateCenter.getSites().replaceBy(sites);
+
   }
 
 }
